@@ -1,0 +1,685 @@
+/* Paleta de colores minimalista de lujo */
+:root {
+    --anthracite: #0f0f0f;      /* Fondo negro profundo y agresivo */
+    --white: #ffffff;           /* Texto y elementos principales claros */
+    --silver-light: #e0e0e0;    /* Gris claro para textos secundarios */
+    --silver-dark: #2a2a2a;     /* Gris oscuro para bordes y tarjetas */
+    --navy-blue: #181818;       /* Fondo de contenedores y encabezados */
+    --accent-blue: #e60012;     /* Rojo intenso deportivo (Acento principal) */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--anthracite);
+    color: var(--white);
+}
+
+header {
+    background-color: var(--navy-blue);
+    color: var(--white);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--silver-dark);
+}
+
+.brand {
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.brand span {
+    font-weight: 700;
+    color: var(--silver-light);
+}
+
+.search-container {
+    flex: 0 1 400px;
+    display: flex;
+    border: 1px solid var(--silver-dark);
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--anthracite);
+    color: var(--white);
+}
+
+.search-container button {
+    background-color: var(--silver-dark);
+    color: var(--white);
+    border: none;
+    padding: 0 25px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.user-actions a {
+    color: var(--silver-light);
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.asesoria-btn {
+    background-color: var(--silver-light);
+    color: var(--anthracite) !important;
+    padding: 8px 15px;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav {
+    background-color: var(--anthracite);
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--silver-dark);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown .dropbtn {
+    color: var(--silver-light);
+    padding: 15px 30px;
+    text-decoration: none;
+    display: block;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: var(--accent-blue);
+    color: var(--white);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--navy-blue);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+.dropdown-content a {
+    color: var(--silver-light);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid var(--silver-dark);
+}
+
+.dropdown-content a:hover {
+    background-color: var(--anthracite);
+    color: var(--white);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 40px 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: var(--white);
+    border: 1px solid var(--silver-light);
+    padding: 20px;
+    text-align: center;
+    color: var(--anthracite);
+}
+
+.img-placeholder {
+    height: 150px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--silver-dark);
+    font-size: 12px;
+    margin-bottom: 15px;
+    border: 1px dashed #ccc;
+}
+
+.product-photo {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 3px;
+}
+
+.banner-section {
+    max-width: 1220px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: var(--navy-blue);
+    border: 1px solid var(--silver-dark);
+    text-align: center;
+    color: var(--white);
+}
+
+.banner-img-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: var(--anthracite);
+    border: 1px dashed var(--silver-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--silver-light);
+    margin-bottom: 15px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cta-btn {
+    background-color: transparent;
+    color: var(--anthracite);
+    padding: 10px 20px;
+    border: 1px solid var(--anthracite);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: var(--anthracite);
+    color: var(--white);
+}
+
+/* Pop-up Overlay y Fondo */
+.popup-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(11, 31, 40, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-bg {
+    /* --- Aumento de tamaño --- */
+    max-width: 900px; /* Aumentado de 500px a 900px para hacerlo más grande */
+    width: 90%;
+    min-height: 450px; /* Altura mínima para mostrar mejor la imagen de fondo */
+    
+    /* --- Configuración de imagen de fondo --- */
+    /* Ajusté un poco la opacidad del degradado (de 0.8 a 0.6) para que la imagen se note más */
+    background-image: linear-gradient(rgba(11, 31, 40, 0.6), rgba(11, 31, 40, 0.9)), url('../img/pop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: transparent; /* Elimina cualquier color de fondo sólido residual */
+    
+    color: var(--white);
+    
+    /* --- Eliminación del borde claro --- */
+    border: none; /* Se eliminó el border: 2px solid var(--silver-light); */
+    border-radius: 12px;
+    padding: 80px 50px;
+    
+    /* Centrado interno del contenido */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* Sombra oscura y elegante en lugar de un borde */
+    box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+}
+
+.popup-content .cta-btn {
+    border-color: var(--white);
+    color: var(--white);
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 15px 35px;
+}
+
+.popup-content .cta-btn:hover {
+    background-color: var(--white);
+    color: var(--anthracite);
+}
+
+/* Chatbot UI */
+.ai-chat-container {
+    position: fixed; bottom: 30px; right: 30px; width: 320px;
+    border: 1px solid var(--silver-dark);
+    background: var(--anthracite); z-index: 1000;
+}
+.chat-header {
+    background-color: var(--navy-blue); padding: 15px;
+    display: flex; justify-content: space-between; cursor: pointer;
+}
+.chat-messages { display: none; height: 300px; padding: 20px; overflow-y: auto; }
+.bot-msg {
+    background: var(--navy-blue); color: var(--silver-light);
+    padding: 12px; border-left: 3px solid var(--silver-light); font-size: 13px;
+    margin-bottom: 10px;
+}
+.chat-input { display: none; border-top: 1px solid var(--silver-dark); }
+.chat-input input { width: 75%; padding: 15px; background: transparent; border: none; color: white; }
+.chat-input button { width: 25%; background: transparent; color: var(--silver-light); border: none; border-left: 1px solid var(--silver-dark); cursor: pointer; }
+
+/* Carrito de Compras */
+.cart-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: var(--anthracite);
+    min-width: 300px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.6);
+    border: 1px solid var(--silver-dark);
+    z-index: 200;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.cart-dropdown h4 {
+    margin-top: 0;
+    border-bottom: 1px solid var(--silver-dark);
+    padding-bottom: 10px;
+}
+
+#cartItemsList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#cartItemsList li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 13px;
+    border-bottom: 1px dashed var(--silver-dark);
+    padding-bottom: 5px;
+}
+
+.cart-total {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: right;
+    color: var(--silver-light);
+}
+
+.checkout-btn {
+    width: 100%;
+    background-color: var(--white);
+    color: var(--anthracite);
+    font-weight: bold;
+}
+
+/* Pie de Página */
+footer {
+    background-color: var(--navy-blue);
+    color: var(--silver-light);
+    padding: 50px 20px 20px 20px;
+    border-top: 2px solid var(--silver-dark);
+    margin-top: 40px;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1000px;
+    margin: 0 auto 40px auto;
+}
+
+.footer-column h4 {
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.footer-column a {
+    display: block;
+    color: var(--silver-light);
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-column a:hover {
+    color: var(--white);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon-img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain; /* Evita que los logos se deformen */
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: grayscale(100%); /* Hace que los logos se vean grises para mantener la elegancia de la página */
+}
+
+/* Efecto al pasar el cursor sobre los iconos de redes sociales */
+.icon-img:hover {
+    transform: scale(1.15); /* Aumenta de tamaño ligeramente */
+    filter: grayscale(0%); /* Devuelve el color original de la red social al hacer hover */
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid var(--silver-dark);
+    padding-top: 20px;
+    font-size: 12px;
+}
+
+.footer-bottom a {
+    color: var(--silver-light);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-bottom a:hover {
+    color: var(--white);
+}
+
+/* Agrega estas líneas al final de tu archivo styles.css existente */
+
+/* Efecto de acercamiento al pasar el cursor (Interactivo) */
+.product-card {
+    background: var(--white);
+    border: 1px solid var(--silver-light);
+    padding: 20px;
+    text-align: center;
+    color: var(--anthracite);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 250px; /* Tamaño fijo para el carrusel */
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* Incrementa el tamaño ligeramente */
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+/* Estructura del Carrusel */
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Oculta lo que se desborda */
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Permite scroll horizontal */
+    scroll-behavior: smooth;
+    padding: 20px 10px; /* Espacio para el efecto de escala */
+}
+
+/* Ocultar barra de scroll para estética de carrusel */
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+.carousel-track {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--anthracite);
+    color: var(--white);
+    border: 2px solid var(--silver-light);
+    padding: 15px;
+    cursor: pointer;
+    z-index: 100;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.carousel-btn:hover {
+    background-color: var(--silver-light);
+    color: var(--anthracite);
+}
+
+.left-btn { left: 0; }
+.right-btn { right: 0; }
+
+/* Botón de eliminar en carrito */
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: #ff4c4c;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+}
+/* ======================================================= */
+/* NUEVO: HERO PRINCIPAL                                    */
+/* ======================================================= */
+.hero-banner {
+    position: relative;
+    max-width: 1300px;
+    margin: 30px auto 0 auto;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid var(--silver-dark);
+    border-radius: 6px;
+}
+
+/* INSERTAR IMAGEN: reemplaza este placeholder por tu <img> o
+   pon background-image: url('../img/hero_principal.jpg'); en .hero-banner */
+.hero-img-placeholder {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--navy-blue);
+    border: 1px dashed var(--silver-dark);
+    color: var(--silver-light);
+    font-size: 14px;
+    z-index: 0;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    background: rgba(11, 31, 40, 0.55);
+    padding: 40px 30px;
+    border-radius: 6px;
+    max-width: 650px;
+}
+
+.hero-content h1 {
+    font-size: 38px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: var(--white);
+}
+
+.hero-content p {
+    color: var(--silver-light);
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.hero-cta {
+    border-color: var(--white);
+    color: var(--white);
+    font-weight: bold;
+    padding: 14px 30px;
+}
+
+.hero-cta:hover {
+    background-color: var(--white);
+    color: var(--anthracite);
+}
+
+/* ======================================================= */
+/* NUEVO: TÍTULOS DE SECCIÓN                                 */
+/* ======================================================= */
+.section-title {
+    text-align: center;
+    padding: 30px 20px 10px 20px;
+    color: var(--silver-light);
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ======================================================= */
+/* NUEVO: TARJETAS DE CATEGORÍA                              */
+/* ======================================================= */
+.category-section {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 40px 20px 40px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.category-card {
+    display: block;
+    text-decoration: none;
+    background-color: var(--navy-blue);
+    border: 1px solid var(--silver-dark);
+    border-radius: 6px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--silver-light);
+}
+
+.category-card h3 {
+    color: var(--white);
+    padding: 15px 10px;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* INSERTAR IMAGEN: reemplaza cada placeholder por tu <img> de categoría */
+.category-img-placeholder {
+    display: block;
+    width: 100%;
+    height: 160px;
+    background-color: var(--anthracite);
+    border-bottom: 1px dashed var(--silver-dark);
+    color: var(--silver-dark);
+    font-size: 12px;
+    object-fit: cover;
+}
+
+.category-card.active-category {
+    border-color: var(--white);
+    box-shadow: 0 0 0 2px var(--white) inset;
+}
+
+/* Resalta el botón de categoría activo en el menú superior */
+.dropdown .dropbtn.active-category {
+    background-color: var(--accent-blue);
+    color: var(--white);
+}
+
+/* ======================================================= */
+/* NUEVO: CATÁLOGO COMPLETO / GRID                           */
+/* ======================================================= */
+.full-catalog-section {
+    max-width: 1300px;
+    margin: 20px auto;
+    padding: 0 40px;
+}
+
+.catalog-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.catalog-header-row .section-title {
+    padding: 30px 0 10px 0;
+}
+
+.clear-filter-btn {
+    background-color: transparent;
+    color: var(--silver-light);
+    border: 1px solid var(--silver-dark);
+    padding: 8px 18px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.3s;
+    height: fit-content;
+}
+
+.clear-filter-btn:hover {
+    background-color: var(--silver-light);
+    color: var(--anthracite);
+}
+
+/* La clase .products-grid ya existía en este archivo; se reutiliza tal cual
+   para mostrar el catálogo completo en formato de cuadrícula. */
+
+/* ======================================================= */
+/* NUEVO: SEGUNDO BANNER (BIENESTAR)                         */
+/* ======================================================= */
+.wellness-banner p {
+    color: var(--silver-light);
+    max-width: 600px;
+    margin: 0 auto;
+}

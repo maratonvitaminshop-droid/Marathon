@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marathon Vitamin Shops | Especialistas en Nutrición</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Pop-up de Bienvenida -->
+    <div id="welcomePopup" class="popup-overlay">
+        <div class="popup-content popup-bg">
+            <h2>Bienvenido a Marathon</h2>
+            <p>Descubre el estándar de oro en suplementación deportiva y bienestar.</p>
+            <button id="closePopup" class="cta-btn">Explorar Colección</button>
+        </div>
+    </div>
+
+    <!-- Encabezado Operativo -->
+    <header>
+        <a href="/" class="brand">Marathon <span>Vitamin Shops</span></a>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Búsqueda de productos...">
+            <button id="searchBtn">Buscar</button>
+        </div>
+        <div class="user-actions">
+            <a href="#" class="asesoria-btn" id="asesoriaHeaderBtn">Solicitar Asesoría</a>
+            <a href="#">Mi Cuenta</a>
+            
+            <!-- Contenedor del Carrito -->
+            <div class="cart-wrapper">
+                <a href="#" id="cartToggleBtn">🛒 Carrito (<span id="cartCount">0</span>)</a>
+                <div class="cart-dropdown" id="cartDropdown">
+                    <h4>Tu Carrito</h4>
+                    <ul id="cartItemsList">
+                        <li class="empty-cart">El carrito está vacío.</li>
+                    </ul>
+                    <div class="cart-total">Total: $<span id="cartTotalValue">0.00</span></div>
+                    <button class="cta-btn checkout-btn">Proceder al Pago</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación Principal -->
+    <nav>
+        <div class="dropdown"><a href="#catalogFull" class="dropbtn nav-category-btn" data-category="rendimiento">Rendimiento Deportivo</a></div>
+        <div class="dropdown"><a href="#catalogFull" class="dropbtn nav-category-btn" data-category="salud">Salud y Longevidad</a></div>
+        <div class="dropdown"><a href="#catalogFull" class="dropbtn nav-category-btn" data-category="peso">Control de Peso</a></div>
+        <div class="dropdown"><a href="#catalogFull" class="dropbtn nav-category-btn" data-category="energia">Energía Pura</a></div>
+    </nav>
+
+    <main id="catalogContainer">
+
+        <!-- ============================= -->
+        <!-- HERO / BANNER PRINCIPAL        -->
+        <!-- ============================= -->
+        <section class="hero-banner">
+            <!-- Imagen aleatoria temporal (LoremFlickr). Reemplázala luego por tu propia foto en img/hero_principal.jpg -->
+            <img class="hero-img-placeholder" src="img/img001.jpeg" alt="Suplementos y estilo de vida fitness">
+            <div class="hero-content">
+                <h1>El Estándar de Oro en Suplementación</h1>
+                <p>Rendimiento deportivo, salud y bienestar en un solo lugar.</p>
+                <a href="#catalogFull" class="cta-btn hero-cta">Ver Catálogo Completo</a>
+            </div>
+        </section>
+
+        <!-- ============================= -->
+        <!-- TARJETAS DE CATEGORÍA          -->
+        <!-- ============================= -->
+        <section class="category-section">
+            <h2 class="section-title">Explora por Categoría</h2>
+            <div class="category-grid">
+                <a href="#catalogFull" class="category-card nav-category-btn" data-category="rendimiento">
+                    <!-- Imagen aleatoria temporal. Reemplázala por img/cat_rendimiento.jpg -->
+                    <img class="category-img-placeholder" src="img/img002.jpeg" alt="Rendimiento Deportivo" loading="lazy">
+                    <h3>Rendimiento Deportivo</h3>
+                </a>
+                <a href="#catalogFull" class="category-card nav-category-btn" data-category="salud">
+                    <!-- Imagen aleatoria temporal. Reemplázala por img/cat_salud.jpg -->
+                    <img class="category-img-placeholder" src="img/img003.jpeg" alt="Salud y Longevidad" loading="lazy">
+                    <h3>Salud y Longevidad</h3>
+                </a>
+                <a href="#catalogFull" class="category-card nav-category-btn" data-category="peso">
+                    <!-- Imagen aleatoria temporal. Reemplázala por img/cat_peso.jpg -->
+                    <img class="category-img-placeholder" src="img/img004.jpeg" alt="Control de Peso" loading="lazy">
+                    <h3>Control de Peso</h3>
+                </a>
+                <a href="#catalogFull" class="category-card nav-category-btn" data-category="energia">
+                    <!-- Imagen aleatoria temporal. Reemplázala por img/cat_energia.jpg -->
+                    <img class="category-img-placeholder" src="img/img005.jpeg" alt="Energía Pura" loading="lazy">
+                    <h3>Energía Pura</h3>
+                </a>
+            </div>
+        </section>
+
+        <!-- ============================= -->
+        <!-- CARRUSEL DE DESTACADOS         -->
+        <!-- ============================= -->
+        <h2 class="section-title">Novedades y Destacados</h2>
+
+        <div class="carousel-container">
+            <button class="carousel-btn left-btn" id="btnPrev">◀</button>
+
+            <div class="carousel-track" id="carouselTrack">
+                <div class="product-card" data-category="rendimiento">
+                    <img class="product-photo" src="img/img006.jpeg" alt="Whey_iso.jpg" loading="lazy">
+                    <h3>Whey Protein Isolate</h3>
+                    <div class="price" data-value="1299.00">$1,299.00</div>
+                    <button class="cta-btn add-to-cart-btn">Añadir al Carrito</button>
+                </div>
+                <div class="product-card" data-category="salud">
+                    <img class="product-photo" src="img/img007.jpeg" alt="Multi_elite.jpg" loading="lazy">
+                    <h3>Complejo Multivitamínico</h3>
+                    <div class="price" data-value="850.00">$850.00</div>
+                    <button class="cta-btn add-to-cart-btn">Añadir al Carrito</button>
+                </div>
+
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img008.jpeg" alt="Caseina.jpg" loading="lazy"><h3>Caseína Micelar Nocturna</h3><div class="price" data-value="1100.00">$1,100.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img009.jpeg" alt="Beef.jpg" loading="lazy"><h3>Proteína de Carne Aislada</h3><div class="price" data-value="1350.00">$1,350.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img017.jpeg" alt="Vegan.jpg" loading="lazy"><h3>Proteína Vegana Orgánica</h3><div class="price" data-value="950.00">$950.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img010.jpeg" alt="Mass.jpg" loading="lazy"><h3>Mass Gainer 12lbs</h3><div class="price" data-value="1899.00">$1,899.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="https://img/img011.jpeg" alt="Soy.jpg" loading="lazy"><h3>Proteína de Soya Premium</h3><div class="price" data-value="750.00">$750.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img018.jpeg" alt="VitC.jpg" loading="lazy"><h3>Vitamina C 1000mg + Zinc</h3><div class="price" data-value="320.00">$320.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img012.jpeg" alt="VitD3.jpg" loading="lazy"><h3>Vitamina D3 5000 UI</h3><div class="price" data-value="280.00">$280.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img019.jpeg" alt="Omega3.jpg" loading="lazy"><h3>Omega 3 Aceite de Krill</h3><div class="price" data-value="650.00">$650.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img013.jpeg" alt="Magnesio.jpg" loading="lazy"><h3>Citrato de Magnesio Prensado</h3><div class="price" data-value="410.00">$410.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img014.jpeg" alt="Calcio.jpg" loading="lazy"><h3>Calcio + Magnesio + D3</h3><div class="price" data-value="390.00">$390.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="energia"><img class="product-photo" src="img/img020.jpeg" alt="BComplex.jpg" loading="lazy"><h3>Complejo B Alta Potencia</h3><div class="price" data-value="350.00">$350.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img015.jpeg" alt="CreatinaHCL.jpg" loading="lazy"><h3>Creatina HCL Absorción Rápida</h3><div class="price" data-value="550.00">$550.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="energia"><img class="product-photo" src="img/img021.jpeg" alt="PreWorkout.jpg" loading="lazy"><h3>Pre-Entreno Óxido Nítrico</h3><div class="price" data-value="890.00">$890.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img016.jpeg" alt="BCAA.jpg" loading="lazy"><h3>Aminoácidos BCAA 2:1:1</h3><div class="price" data-value="620.00">$620.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img022.jpeg" alt="EAA.jpg" loading="lazy"><h3>Aminoácidos Esenciales EAA</h3><div class="price" data-value="710.00">$710.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="energia"><img class="product-photo" src="img/img023.jpeg" alt="Cafeina.jpg" loading="lazy"><h3>Cafeína Anhidra 200mg</h3><div class="price" data-value="250.00">$250.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="https://loremflickr.com/300/220/protein,whey,gym?lock=10" alt="Glutamina.jpg" loading="lazy"><h3>Glutamina Micronizada 500g</h3><div class="price" data-value="480.00">$480.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+
+                <div class="product-card" data-category="peso"><img class="product-photo" src="img/img024.jpeg" alt="Carnitina.jpg" loading="lazy"><h3>L-Carnitina Líquida 3000mg</h3><div class="price" data-value="450.00">$450.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="peso"><img class="product-photo" src="https://loremflickr.com/300/220/weightloss,fitness,diet?lock=2" alt="CLA.jpg" loading="lazy"><h3>CLA Ácido Linoleico Conjugado</h3><div class="price" data-value="590.00">$590.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="peso"><img class="product-photo" src="img/img025.jpeg" alt="Termogenico.jpg" loading="lazy"><h3>Quemador Termogénico Pro</h3><div class="price" data-value="850.00">$850.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="peso"><img class="product-photo" src="https://loremflickr.com/300/220/weightloss,fitness,diet?lock=4" alt="GreenTea.jpg" loading="lazy"><h3>Extracto de Té Verde Puro</h3><div class="price" data-value="340.00">$340.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img026.jpeg" alt="Colageno.jpg" loading="lazy"><h3>Colágeno Hidrolizado Articular</h3><div class="price" data-value="780.00">$780.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img027.jpeg" alt="Ashwagandha.jpg" loading="lazy"><h3>Ashwagandha Reductor de Estrés</h3><div class="price" data-value="420.00">$420.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+            </div>
+
+            <button class="carousel-btn right-btn" id="btnNext">▶</button>
+        </div>
+
+        <!-- ============================= -->
+        <!-- BANNER DE MARCA                -->
+        <!-- ============================= -->
+        <div class="banner-section brand-banner">
+            <!-- Imagen aleatoria temporal. Reemplázala por img/brand_optimum.jpg -->
+            <img class="banner-img-placeholder" src="img/img027.jpeg" alt="Marca destacada del mes" loading="lazy">
+            <h2>Marca Destacada del Mes</h2>
+        </div>
+
+        <!-- ============================= -->
+        <!-- CATÁLOGO COMPLETO (GRID)       -->
+        <!-- ============================= -->
+        <section id="catalogFull" class="full-catalog-section">
+            <div class="catalog-header-row">
+                <h2 class="section-title">Catálogo Completo</h2>
+                <button id="clearFilterBtn" class="clear-filter-btn">Mostrar Todos</button>
+            </div>
+
+            <div class="products-grid" id="fullProductsGrid">
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img001.jpeg" alt="Whey_iso.jpg" loading="lazy"><h3>Whey Protein Isolate</h3><div class="price" data-value="1299.00">$1,299.00</div><button class="cta-btn add-to-cart-btn">Añadir al Carrito</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img002.jpeg" alt="Multi_elite.jpg" loading="lazy"><h3>Complejo Multivitamínico</h3><div class="price" data-value="850.00">$850.00</div><button class="cta-btn add-to-cart-btn">Añadir al Carrito</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img003.jpeg" alt="Caseina.jpg" loading="lazy"><h3>Caseína Micelar Nocturna</h3><div class="price" data-value="1100.00">$1,100.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img004.jpeg" alt="Beef.jpg" loading="lazy"><h3>Proteína de Carne Aislada</h3><div class="price" data-value="1350.00">$1,350.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img005.jpeg" alt="Vegan.jpg" loading="lazy"><h3>Proteína Vegana Orgánica</h3><div class="price" data-value="950.00">$950.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img006.jpeg" alt="Mass.jpg" loading="lazy"><h3>Mass Gainer 12lbs</h3><div class="price" data-value="1899.00">$1,899.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img007.jpeg" alt="Soy.jpg" loading="lazy"><h3>Proteína de Soya Premium</h3><div class="price" data-value="750.00">$750.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img008.jpeg" alt="VitC.jpg" loading="lazy"><h3>Vitamina C 1000mg + Zinc</h3><div class="price" data-value="320.00">$320.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img009.jpeg" alt="VitD3.jpg" loading="lazy"><h3>Vitamina D3 5000 UI</h3><div class="price" data-value="280.00">$280.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img010.jpeg" alt="Omega3.jpg" loading="lazy"><h3>Omega 3 Aceite de Krill</h3><div class="price" data-value="650.00">$650.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img011.jpeg" alt="Magnesio.jpg" loading="lazy"><h3>Citrato de Magnesio Prensado</h3><div class="price" data-value="410.00">$410.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img012.jpeg" alt="Calcio.jpg" loading="lazy"><h3>Calcio + Magnesio + D3</h3><div class="price" data-value="390.00">$390.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="energia"><img class="product-photo" src="img/img013.jpeg" alt="BComplex.jpg" loading="lazy"><h3>Complejo B Alta Potencia</h3><div class="price" data-value="350.00">$350.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img014.jpeg" alt="CreatinaHCL.jpg" loading="lazy"><h3>Creatina HCL Absorción Rápida</h3><div class="price" data-value="550.00">$550.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="energia"><img class="product-photo" src="img/img015.jpeg" alt="PreWorkout.jpg" loading="lazy"><h3>Pre-Entreno Óxido Nítrico</h3><div class="price" data-value="890.00">$890.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img016.jpeg" alt="BCAA.jpg" loading="lazy"><h3>Aminoácidos BCAA 2:1:1</h3><div class="price" data-value="620.00">$620.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img017.jpeg" alt="EAA.jpg" loading="lazy"><h3>Aminoácidos Esenciales EAA</h3><div class="price" data-value="710.00">$710.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="energia"><img class="product-photo" src="img/img018.jpeg" alt="Cafeina.jpg" loading="lazy"><h3>Cafeína Anhidra 200mg</h3><div class="price" data-value="250.00">$250.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="rendimiento"><img class="product-photo" src="img/img019.jpeg" alt="Glutamina.jpg" loading="lazy"><h3>Glutamina Micronizada 500g</h3><div class="price" data-value="480.00">$480.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="peso"><img class="product-photo" src="img/img020.jpeg" alt="Carnitina.jpg" loading="lazy"><h3>L-Carnitina Líquida 3000mg</h3><div class="price" data-value="450.00">$450.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="peso"><img class="product-photo" src="img/img021.jpeg" alt="CLA.jpg" loading="lazy"><h3>CLA Ácido Linoleico Conjugado</h3><div class="price" data-value="590.00">$590.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="peso"><img class="product-photo" src="img/img022.jpeg" alt="Termogenico.jpg" loading="lazy"><h3>Quemador Termogénico Pro</h3><div class="price" data-value="850.00">$850.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="peso"><img class="product-photo" src="img/img023.jpeg" alt="GreenTea.jpg" loading="lazy"><h3>Extracto de Té Verde Puro</h3><div class="price" data-value="340.00">$340.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img024.jpeg" alt="Colageno.jpg" loading="lazy"><h3>Colágeno Hidrolizado Articular</h3><div class="price" data-value="780.00">$780.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+                <div class="product-card" data-category="salud"><img class="product-photo" src="img/img025.jpeg" alt="Ashwagandha.jpeg" loading="lazy"><h3>Ashwagandha Reductor de Estrés</h3><div class="price" data-value="420.00">$420.00</div><button class="cta-btn add-to-cart-btn">Añadir</button></div>
+            </div>
+        </section>
+
+        <!-- ============================= -->
+        <!-- BANNER DE BIENESTAR            -->
+        <!-- ============================= -->
+        <div class="banner-section wellness-banner">
+            <!-- Imagen aleatoria temporal. Reemplázala por img/banner_bienestar.jpg -->
+            <img class="banner-img-placeholder" src="https://loremflickr.com/1200/300/wellness,nature,health?lock=21" alt="Bienestar y longevidad" loading="lazy">
+            <h2>Bienestar y Longevidad</h2>
+            <p>Descubre nuestra línea premium de vitaminas, minerales y antioxidantes.</p>
+        </div>
+
+    </main>
+
+<!-- Widget Chatbot IA -->
+    <div class="ai-chat-container">
+        <div class="chat-header" id="toggleChatBtn">
+            <span>Asesor Nutricional IA</span>
+            <span id="chat-icon">▲</span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="bot-msg">Bienvenido a Marathon. ¿En qué puedo asistirle hoy para optimizar su rendimiento?</div>
+        </div>
+        <div class="chat-input" id="chatInput">
+            <input type="text" id="botInputField" placeholder="Escriba su consulta...">
+            <button id="sendBotMsgBtn">Enviar</button>
+        </div>
+    </div>
+
+<!-- Pie de Página -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>Navegación</h4>
+                <a href="#">Mi Cuenta</a>
+                <a href="#">Ayuda y Soporte</a>
+                <a href="#">Acerca de Nosotros</a>
+            </div>
+            
+            <div class="footer-column social-media">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <!-- Enlaces e Iconos de Redes Sociales -->
+                    <!-- Reemplaza "URL_DE_X" con el link real de tus perfiles y "img/icono_X.png" con el logo correspondiente -->
+                    
+                    <a href="URL_DE_INSTAGRAM" target="_blank" title="Instagram">
+                        <img class="icon-img" src="img/insta.jpg" alt="Instagram">
+                    </a>
+                    
+                    <a href="URL_DE_TIKTOK" target="_blank" title="TikTok">
+                        <img class="icon-img" src="img/tiktok.png" alt="TikTok">
+                    </a>
+                    
+                    <a href="URL_DE_FACEBOOK" target="_blank" title="Facebook">
+                        <img class="icon-img" src="img/face.png" alt="Facebook">
+                    </a>
+                    
+                    <a href="URL_DE_X" target="_blank" title="X (Twitter)">
+                        <img class="icon-img" src="img/x.png" alt="X">
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <a href="#">Aviso de Privacidad</a> | 
+            <a href="#">Condiciones de Uso</a> | 
+            <a href="#">Aviso de Funcionamiento COFEPRIS</a>
+            <p>&copy; 2026 Marathon Vitamin Shops.</p>
+        </div>
+    </footer>
+    
+    <script src="js/scripts.js"></script>
+</body>
+</html>
