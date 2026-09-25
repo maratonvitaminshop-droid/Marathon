@@ -1,16 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
+
+    // --- 0. CARRUSEL PRINCIPAL DE BANNERS (HERO) ---
+    const heroCarousel = document.getElementById("heroBannerCarousel");
+
+    if (heroCarousel) {
+        const heroSlides = heroCarousel.querySelectorAll(".hero-slide");
+        let heroIndex = 0;
+
+        if (heroSlides.length > 1) {
+            setInterval(() => {
+                heroSlides[heroIndex].classList.remove("active");
+                heroIndex = (heroIndex + 1) % heroSlides.length;
+                heroSlides[heroIndex].classList.add("active");
+            }, 5000);
+        }
+    }
+
     // --- 1. POP-UP EMERGENTE DE BIENVENIDA ---
     const popup = document.getElementById("welcomePopup");
     const closeBtn = document.getElementById("closePopup");
 
     if (popup && closeBtn) {
-        // Muestra el pop-up automáticamente medio segundo después de cargar la página
         setTimeout(() => {
             popup.style.display = "flex";
         }, 500);
 
-        // Oculta el pop-up al hacer clic en el botón de cerrar/explorar
         closeBtn.addEventListener("click", () => {
             popup.style.display = "none";
         });
@@ -110,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- 4. GESTIÓN DEL CARRITO DE COMPRAS (AÑADIR Y QUITAR) ---
+    // --- 4. GESTIÓN DEL CARRITO DE COMPRAS ---
     const cartToggleBtn = document.getElementById("cartToggleBtn");
     const cartDropdown = document.getElementById("cartDropdown");
     const addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
@@ -127,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Función global para permitir la eliminación de productos desde el HTML dinámico del carrito
     window.removeFromCart = function(index) {
         cart.splice(index, 1);
         actualizarCarrito();
@@ -166,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
             cart.push({ title, price });
             actualizarCarrito();
             
-            // Retroalimentación visual en el botón
             const originalText = btn.textContent;
             btn.textContent = "¡Añadido!";
             btn.style.backgroundColor = "var(--white)";
@@ -179,57 +191,87 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- 4.5 FILTRADO POR CATEGORÍA (NAV SUPERIOR Y TARJETAS DE CATEGORÍA) ---
+    // --- 4.6 PROCESAR PAGO EN CARRITO ---
+    const checkoutBtn = document.getElementById("checkoutBtn");
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener("click", () => {
+            if (cart.length > 0) {
+                alert("Su compra fue procesada y le enviamos la información por correo.");
+                cart = [];
+                actualizarCarrito();
+                if (cartDropdown) cartDropdown.style.display = "none";
+            } else {
+                alert("Su carrito está vacío. Agregue productos para proceder al pago.");
+            }
+        });
+    }
+
+    // --- 4.5 FILTRADO Y EXPANSIÓN DE CATÁLOGO (MÁXIMO 8 INICIAL) ---
+    const fullProductsGrid = document.getElementById("fullProductsGrid");
+    const toggleCatalogBtn = document.getElementById("toggleCatalogBtn");
     const categoryButtons = document.querySelectorAll(".nav-category-btn");
     const clearFilterBtn = document.getElementById("clearFilterBtn");
-    const fullProductsGrid = document.getElementById("fullProductsGrid");
 
-    function filtrarPorCategoria(categoria) {
-        if (!fullProductsGrid) return;
+    if (fullProductsGrid && toggleCatalogBtn) {
+        const productCards = Array.from(fullProductsGrid.querySelectorAll(".product-card"));
+        let isExpanded = false;
 
-        // Solo se filtran las tarjetas del catálogo completo (grid),
-        // el carrusel de destacados siempre muestra todo.
-        const tarjetas = fullProductsGrid.querySelectorAll(".product-card");
-        tarjetas.forEach(tarjeta => {
-            if (tarjeta.getAttribute("data-category") === categoria) {
-                tarjeta.style.display = "block";
-            } else {
-                tarjeta.style.display = "none";
+        function renderCatalog() {
+            const activeFilter = document.querySelector(".nav-category-btn.active-category");
+
+            productCards.forEach((card, index) => {
+                if (activeFilter) {
+                    toggleCatalogBtn.style.display = "none";
+                    const categoria = activeFilter.getAttribute("data-category");
+                    if (card.getAttribute("data-category") === categoria) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                } else {
+                    toggleCatalogBtn.style.display = "inline-block";
+                    if (isExpanded || index < 8) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                }
+            });
+
+            toggleCatalogBtn.textContent = isExpanded ? "Contraer Catálogo" : "Ver Catálogo Completo";
+        }
+
+        renderCatalog();
+
+        toggleCatalogBtn.addEventListener("click", () => {
+            isExpanded = !isExpanded;
+            renderCatalog();
+            
+            if (!isExpanded) {
+                fullProductsGrid.scrollIntoView({ behavior: "smooth", block: "start" });
             }
         });
 
-        // Resalta el botón/categoría activa
-        categoryButtons.forEach(btn => btn.classList.remove("active-category"));
         categoryButtons.forEach(btn => {
-            if (btn.getAttribute("data-category") === categoria) {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                categoryButtons.forEach(b => b.classList.remove("active-category"));
                 btn.classList.add("active-category");
-            }
+                renderCatalog();
+                if (fullProductsGrid) fullProductsGrid.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
         });
+
+        if (clearFilterBtn) {
+            clearFilterBtn.addEventListener("click", () => {
+                categoryButtons.forEach(btn => btn.classList.remove("active-category"));
+                isExpanded = false;
+                renderCatalog();
+            });
+        }
     }
 
-    function limpiarFiltroCategoria() {
-        if (!fullProductsGrid) return;
-        const tarjetas = fullProductsGrid.querySelectorAll(".product-card");
-        tarjetas.forEach(tarjeta => { tarjeta.style.display = "block"; });
-        categoryButtons.forEach(btn => btn.classList.remove("active-category"));
-    }
-
-    categoryButtons.forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            const categoria = btn.getAttribute("data-category");
-            filtrarPorCategoria(categoria);
-
-            const destino = document.getElementById("catalogFull");
-            if (destino) destino.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-    });
-
-    if (clearFilterBtn) {
-        clearFilterBtn.addEventListener("click", limpiarFiltroCategoria);
-    }
-
-    // --- 5. CARRUSEL INTERACTIVO Y AUTOMÁTICO (CADA 10 SEGUNDOS) ---
+    // --- 5. CARRUSEL INTERACTIVO Y AUTOMÁTICO (CADA 5 SEGUNDOS) ---
     const track = document.getElementById("carouselTrack");
     const btnPrev = document.getElementById("btnPrev");
     const btnNext = document.getElementById("btnNext");
@@ -258,5 +300,71 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btnNext && btnPrev) {
         btnNext.addEventListener("click", () => { scrollRight(); resetInterval(); });
         btnPrev.addEventListener("click", () => { scrollLeft(); resetInterval(); });
+    }
+
+// --- 6. RUEDA DE LA FORTUNA Y REGISTRO PUBLICITARIO ---
+    const wheelTrigger = document.getElementById("wheelTrigger");
+    const wheelModal = document.getElementById("wheelModal");
+    const closeWheelBtn = document.getElementById("closeWheelBtn");
+    const spinBtn = document.getElementById("spinBtn");
+    const wheel = document.getElementById("wheel");
+    const wheelResult = document.getElementById("wheelResult");
+    const showRegisterFormBtn = document.getElementById("showRegisterFormBtn");
+    const wheelRegisterForm = document.getElementById("wheelRegisterForm");
+    const couponFinalMsg = document.getElementById("couponFinalMsg");
+
+    if (wheelTrigger && wheelModal) {
+        wheelTrigger.addEventListener("click", () => {
+            wheelModal.style.display = "flex";
+        });
+
+        if (closeWheelBtn) {
+            closeWheelBtn.addEventListener("click", () => {
+                wheelModal.style.display = "none";
+            });
+        }
+
+        let hasSpun = false;
+        if (spinBtn && wheel) {
+            spinBtn.addEventListener("click", () => {
+                if (hasSpun) return;
+                hasSpun = true;
+                spinBtn.disabled = true;
+                spinBtn.style.opacity = "0.5";
+
+                /*
+                   Cálculo para alinear el sector del 80% (300° a 360°, centro en 330°) 
+                   directamente con la flecha superior (0° / 360°):
+                   Giro de 5 vueltas completas (1800°) + 30° de compensación = 1830°.
+                */
+                const degrees = 1830; 
+                wheel.style.transform = `rotate(${degrees}deg)`;
+
+                setTimeout(() => {
+                    if (wheelResult) {
+                        wheelResult.style.display = "block";
+                    }
+                }, 4000);
+            });
+        }
+
+        // Mostrar formulario de registro publicitario
+        if (showRegisterFormBtn && wheelRegisterForm) {
+            showRegisterFormBtn.addEventListener("click", () => {
+                wheelResult.style.display = "none";
+                wheelRegisterForm.style.display = "block";
+            });
+        }
+
+        // Procesar formulario de registro
+        if (wheelRegisterForm) {
+            wheelRegisterForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                wheelRegisterForm.style.display = "none";
+                if (couponFinalMsg) {
+                    couponFinalMsg.style.display = "block";
+                }
+            });
+        }
     }
 });
